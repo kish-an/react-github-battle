@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LanguagesNav from './LanguagesNav';
 import { fetchPopularRepos } from '../utils/api';
+import ReposGrid from './ReposGrid';
 
 class Popular extends Component {
     constructor(props) {
@@ -23,11 +24,11 @@ class Popular extends Component {
     updateLangauge(language) {
         this.setState({
             language,
-            error: null
+            error: null,
         });
 
         if (!this.state.repos[language]) {
-            fetchPopularRepos(this.state.language)
+            fetchPopularRepos(language)
                 .then(data => {
                     this.setState(({ repos }) => ({
                         repos: {
@@ -67,7 +68,7 @@ class Popular extends Component {
 
                 {error && <p>{error}</p>}
 
-                {repos[language] && <pre> {JSON.stringify(repos[language], null, 2)} </pre>}
+                {repos[language] && <ReposGrid repos={repos[language]} />}
             </React.Fragment>
         )
     }
