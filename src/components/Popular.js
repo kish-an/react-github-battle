@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LanguagesNav from './LanguagesNav';
 
 class Popular extends Component {
     constructor(props) {
@@ -18,24 +19,15 @@ class Popular extends Component {
     }
 
     render() {
-        const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
+        const { language } = this.state;
 
         return (
-            <nav>
-                <ul className="flex-center">
-                    {languages.map(language => (
-                        <li key={language}>
-                            <button
-                            className="btn-clear nav-link"
-                            style={language === this.state.language ? { color: 'rgb(187, 46, 31)' } : null}
-                            onClick={()=> this.updateLangauge(language)}
-                            >
-                                {language}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            <React.Fragment>
+                <LanguagesNav
+                    selectedLang={language}
+                    onUpdateLang={this.updateLangauge}
+                />
+            </React.Fragment>
         )
     }
 }
