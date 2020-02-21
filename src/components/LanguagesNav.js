@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function LanguagesNav({ selectedLang, onUpdateLang }) {
     const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
@@ -20,6 +21,11 @@ function LanguagesNav({ selectedLang, onUpdateLang }) {
             </ul>
         </nav>
     )
+}
+
+LanguagesNav.propTypes = {
+    selectedLang: PropTypes.string.isRequired,
+    onUpdateLang: PropTypes.func.isRequired,
 }
 
 export default LanguagesNav;
