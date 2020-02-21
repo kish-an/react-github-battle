@@ -8,7 +8,7 @@ class Popular extends Component {
 
         this.state = {
             language: 'All',
-            repos: null,
+            repos: {},
             error: null,
         }
 
@@ -23,28 +23,34 @@ class Popular extends Component {
     updateLangauge(language) {
         this.setState({
             language,
-            repos: null,
             error: null
         });
 
-        fetchPopularRepos(this.state.language)
-        .then(repos => {
-            this.setState({
-                repos,
-                error: null
-            });
-        })
-        .catch(err => {
-            console.warn('Error fetching repos: ', err);
+        if (!this.state.repos[language]) {
+            fetchPopularRepos(this.state.language)
+                .then(data => {
+                    this.setState(({ repos }) => ({
+                        repos: {
+                            ...repos,
+                            [language]: data
+                        },
+                    }));
+                })
+                .catch(err => {
+                    console.warn('Error fetching repos:', err);
 
-            this.setState({
-                error: 'There was an error fetching the repositories.'
-            });
-        });
+                    this.setState({
+                        error: 'There was an error fetching the repositories.'
+                    });
+                });
+        }
+
     }
 
     isLoading() {
-        return this.state.repos === null && this.state.error === null;
+        const { language, repos, error } = this.state;
+
+        return !repos[language] && !error;
     }
 
     render() {
@@ -61,7 +67,7 @@ class Popular extends Component {
 
                 {error && <p>{error}</p>}
 
-                {repos && <pre> {JSON.stringify(repos, null, 2)} </pre>}
+                {repos[language] && <pre> {JSON.stringify(repos[language], null, 2)} </pre>}
             </React.Fragment>
         )
     }
