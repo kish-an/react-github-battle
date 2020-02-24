@@ -215,5 +215,23 @@ li {
 
 .players-container {
     margin: 6.25rem 0;
-    
+
+}
+
+.avatar-sm {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+.player-info {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-size: 1.25rem;
+    padding: 0.625rem;
+}
+
+.player-info .link {
+    margin-left: 0.625rem;
 }
