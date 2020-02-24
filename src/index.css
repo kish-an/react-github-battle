@@ -109,18 +109,18 @@ li {
     border-radius: 3px;
 }
 
-.repo {
+.card {
     margin: 0.625rem 0;
-    width: 250px;
+    width: 350px;
     padding: 1.25rem;
 }
 
-.repo a {
+.card a {
     text-decoration: none;
 
 }
 
-.repo img {
+.card img {
     margin-bottom: 0.5rem;
 }
 
@@ -238,4 +238,10 @@ li {
 
 .btn-space {
     margin: 2.5rem auto;
+}
+
+.error {
+    color: #ff1616;
+    font-size: 1.25rem;
+    margin: 3.2rem 0;
 }

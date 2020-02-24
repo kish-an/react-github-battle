@@ -66,7 +66,7 @@ class Popular extends Component {
 
                 {this.isLoading() && <p>Loading...</p>}
 
-                {error && <p>{error}</p>}
+                {error && <p className="center-text error">{error}</p>}
 
                 {repos[language] && <ReposGrid repos={repos[language]} />}
             </React.Fragment>
