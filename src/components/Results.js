@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { battle } from '../utils/api';
 import { FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser } from 'react-icons/fa';
+import Card from './Card';
 
 class Results extends Component {
     constructor(props) {
@@ -45,19 +46,13 @@ class Results extends Component {
 
         return (
             <div className="grid space-around container-sm">
-                <div className="card bg-light">
-                    <h4 className="header-lg center-text">
-                        {winner.score === loser.score ? 'Tie' : 'Winner'}
-                    </h4>
-                    <img src={winner.profile.avatar_url} alt={`Avatar for ${winner.profile.login}`} className="avatar" />
-                    <h4 className="center-text">
-                        Score: {winner.score.toLocaleString()}
-                    </h4>
-                    <h2 className="center-text">
-                        <a href={winner.profile.html_url} className="link">
-                            {winner.profile.login}
-                        </a>
-                    </h2>
+                <Card
+                    header={winner.score === loser.score ? 'Tie' : 'Winner'}
+                    subheader={`Score: ${winner.score.toLocaleString()}`}
+                    avatar={winner.profile.avatar_url}
+                    href={winner.profile.html_url}
+                    name={winner.profile.login}
+                >
                     <ul className="card-list">
                         <li>
                             <FaUser color="rgb(239,115,115)" size={22} />
@@ -84,20 +79,15 @@ class Results extends Component {
                             {winner.profile.following.toLocaleString()} followers
                         </li>
                     </ul>
-                </div>
-                <div className="card bg-light">
-                    <h4 className="header-lg center-text">
-                        {winner.score === loser.score ? 'Tie' : 'Loser'}
-                    </h4>
-                    <img src={loser.profile.avatar_url} alt={`Avatar for ${loser.profile.login}`} className="avatar" />
-                    <h4 className="center-text">
-                        Score: {loser.score.toLocaleString()}
-                    </h4>
-                    <h2 className="center-text">
-                        <a href={loser.profile.html_url} className="link">
-                            {loser.profile.login}
-                        </a>
-                    </h2>
+                </Card>
+
+                <Card
+                    header={winner.score === loser.score ? 'Tie' : 'Loser'}
+                    subheader={`Score: ${loser.score.toLocaleString()}`}
+                    avatar={loser.profile.avatar_url}
+                    href={loser.profile.html_url}
+                    name={loser.profile.login}
+                >
                     <ul className="card-list">
                         <li>
                             <FaUser color="rgb(239,115,115)" size={22} />
@@ -121,10 +111,10 @@ class Results extends Component {
                         </li>
                         <li>
                             <FaUserFriends color="rgb(64,183,95)" size={22} />
-                            {loser.profile.following.toLocaleString()} followers
+                            {loser.profile.following.toLocaleString()} following
                         </li>
                     </ul>
-                </div>
+                </Card>
             </div>
         )
     }
