@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { battle } from '../utils/api';
 import Card from './Card';
 import ProfileList from './ProfileList';
+import Loading from './Loading';
 
 class Results extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class Results extends Component {
         const { winner, loser, error, loading } = this.state;
 
         if (loading) {
-            return <p>Loading...</p>
+            return <Loading text="Battling" />
         } else if (error) {
             return <p className="center-text error">{error}</p>
         }
@@ -69,7 +70,7 @@ class Results extends Component {
                     </Card>
                 </div>
                 <button
-                    class="btn dark-btn btn-space"
+                    className="btn dark-btn btn-space"
                     onClick={this.props.onReset}
                 >
                     Reset
