@@ -8,7 +8,7 @@ class App extends Component {
     render(props) {
         return (
             <div className="container">
-                <Battle />
+                <Popular />
             </div>
         )
     }
