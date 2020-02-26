@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeConsumer } from '../contexts/theme';
 
 class PlayerInput extends Component {
     constructor(props) {
@@ -27,29 +28,33 @@ class PlayerInput extends Component {
 
     render() {
         return (
-            <form className="column player" onSubmit={this.handleSubmit}>
-                <label htmlFor={this.props.label} className="player-label">
-                    {this.props.label}
-                </label>
-                <div className="row player-inputs">
-                    <input
-                        type="text"
-                        id={this.props.label}
-                        className="input-light"
-                        placeholder="Github username"
-                        autoComplete="off"
-                        value={this.state.username}
-                        onChange={this.handleChange}
-                    />
-                    <button
-                        className="btn dark-btn"
-                        type="submit"
-                        disabled={!this.state.username}
-                    >
-                        Submit
-                    </button>
-                </div>
-            </form>
+            <ThemeConsumer>
+                {({ theme }) => (
+                    <form className="column player" onSubmit={this.handleSubmit}>
+                        <label htmlFor={this.props.label} className="player-label">
+                            {this.props.label}
+                        </label>
+                        <div className="row player-inputs">
+                            <input
+                                type="text"
+                                id={this.props.label}
+                                className={`input-${theme}`}
+                                placeholder="Github username"
+                                autoComplete="off"
+                                value={this.state.username}
+                                onChange={this.handleChange}
+                            />
+                            <button
+                                className={`btn ${theme === 'light' ? 'dark' : 'light'}-btn`}
+                                type="submit"
+                                disabled={!this.state.username}
+                            >
+                                Submit
+                        </button>
+                        </div>
+                    </form>
+                )}
+            </ThemeConsumer>
         )
     }
 }
