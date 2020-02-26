@@ -34,7 +34,7 @@ function ProfileList({ profile }) {
                         </li>
             <li>
                 <FaUserFriends color="rgb(64,183,95)" size={22} />
-                {following.toLocaleString()} followers
+                {following.toLocaleString()} following
             </li>
         </ul>
     )
