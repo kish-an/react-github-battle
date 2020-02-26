@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeConsumer } from '../contexts/theme';
+import { ThemeConsumer } from '../../contexts/theme';
 
 function Nav() {
     return (

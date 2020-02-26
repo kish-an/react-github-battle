@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withHover from './withHover';
-import Hover from './Hover';
+import withHover from '../HOC/withHover';
+import Hover from '../RenderProps/Hover';
 
 const styles = {
     container: {

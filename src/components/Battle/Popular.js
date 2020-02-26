@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import LanguagesNav from './LanguagesNav';
-import { fetchPopularRepos } from '../utils/api';
-import ReposGrid from './ReposGrid';
-import Loading from './Loading';
+import LanguagesNav from '../Repos/LanguagesNav';
+import { fetchPopularRepos } from '../../utils/api';
+import ReposGrid from '../Repos/ReposGrid';
+import Loading from '../Loading';
 
 class Popular extends Component {
     constructor(props) {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Popular from './components/Popular';
+import Popular from './components/Battle/Popular';
 import Battle from './components/Battle';
 import { ThemeProvider } from './contexts/theme';
-import Nav from './components/Nav';
+import Nav from './components/Navbar/Nav';
 
 
 class App extends Component {

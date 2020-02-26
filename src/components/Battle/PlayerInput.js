@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ThemeConsumer } from '../contexts/theme';
+import { ThemeConsumer } from '../../contexts/theme';
 
 class PlayerInput extends Component {
     constructor(props) {

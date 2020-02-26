@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser } from 'react-icons/fa';
-import Tooltip from './Tooltip';
+import Tooltip from '../Tooltip';
 
 function ProfileList({ profile }) {
     const { name, location, company, followers, following } = profile;

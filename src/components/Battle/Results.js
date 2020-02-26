@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { battle } from '../utils/api';
-import Card from './Card';
+import { battle } from '../../utils/api';
+import Card from '../Card';
 import ProfileList from './ProfileList';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 class Results extends Component {
     constructor(props) {
