@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Popular from './components/Battle/Popular';
+import Popular from './components/Repos/Popular';
 import Battle from './components/Battle/Battle';
 import { ThemeProvider } from './contexts/theme';
 import Nav from './components/Navbar/Nav';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
     constructor(props) {
@@ -23,14 +23,18 @@ class App extends Component {
 
     render() {
         return (
-            <ThemeProvider value={this.state}>
-                <div className={this.state.theme}>
-                    <div className="container">
-                        <Nav />
-                        <Battle />
+            <Router>
+                <ThemeProvider value={this.state}>
+                    <div className={this.state.theme}>
+                        <div className="container">
+                            <Nav />
+
+                            <Route exact path="/" component={Popular} />
+                            <Route path="/battle" component={Battle} />
+                        </div>
                     </div>
-                </div>
-            </ThemeProvider>
+                </ThemeProvider>
+            </Router>
         )
     }
 }

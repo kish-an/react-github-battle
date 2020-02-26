@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import LanguagesNav from '../Repos/LanguagesNav';
+import LanguagesNav from './LanguagesNav';
 import { fetchPopularRepos } from '../../utils/api';
-import ReposGrid from '../Repos/ReposGrid';
+import ReposGrid from './ReposGrid';
 import Loading from '../Loading';
 
 class Popular extends Component {
@@ -28,6 +28,7 @@ class Popular extends Component {
             error: null,
         });
 
+        // Cache fetched repos
         if (!this.state.repos[language]) {
             fetchPopularRepos(language)
                 .then(data => {
@@ -42,7 +43,7 @@ class Popular extends Component {
                     console.warn('Error fetching repos:', err);
 
                     this.setState({
-                        error: 'There was an error fetching the repositories.'
+                        error: 'There was an error fetching the repositories 😔'
                     });
                 });
         }
