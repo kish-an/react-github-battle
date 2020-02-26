@@ -6,7 +6,7 @@ import Battle from './components/Battle/Battle';
 import Results from './components/Battle/Results';
 import { ThemeProvider } from './contexts/theme';
 import Nav from './components/Navbar/Nav';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
     constructor(props) {
@@ -30,9 +30,14 @@ class App extends Component {
                         <div className="container">
                             <Nav />
 
-                            <Route exact path="/" component={Popular} />
-                            <Route exact path="/battle" component={Battle} />
-                            <Route path='/battle/results' component={Results} />
+                            <Switch>
+                                <Route exact path="/" component={Popular} />
+                                <Route exact path="/battle" component={Battle} />
+                                <Route path='/battle/results' component={Results} />
+                                <Route
+                                    render={() => <h1 style={{ textAlign: 'center', color: '#c0392b'}}>404 🚨</h1>}
+                                />
+                            </Switch>
                         </div>
                     </div>
                 </ThemeProvider>
