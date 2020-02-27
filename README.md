@@ -1,2 +1,2 @@
 # github-battle
-React course project
+[https://ghbattle-react.netlify.com/]
