@@ -1,2 +1,2 @@
 # github-battle
-[https://ghbattle-react.netlify.com/]
+https://ghbattle-react.netlify.com/
