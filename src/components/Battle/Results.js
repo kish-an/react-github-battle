@@ -17,6 +17,14 @@ class Results extends Component {
     componentDidMount() {
         const { playerOne, playerTwo } = queryString.parse(this.props.location.search);
 
+        if (!playerOne || !playerTwo) {
+            this.setState({
+                error: 'Did you enter two players? 🤨',
+                loading: false,
+            });
+            return;
+        }
+
         battle([playerOne, playerTwo])
             .then(players => {
                 this.setState({
@@ -31,7 +39,7 @@ class Results extends Component {
                     error: message,
                     loading: false,
                 })
-            })
+            });
     }
 
     render() {
