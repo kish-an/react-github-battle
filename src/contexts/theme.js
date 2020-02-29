@@ -1,6 +1,7 @@
 import React from 'react';
 
-const { Consumer, Provider } = React.createContext();
+// No longer destructuring Consumer & Provider as the useContext hook requires the context object createContext returns
+const ThemeContext = React.createContext();
+export const ThemeProvider = ThemeContext.Provider;
 
-export const ThemeConsumer = Consumer;
-export const ThemeProvider = Provider;
+export default ThemeContext;

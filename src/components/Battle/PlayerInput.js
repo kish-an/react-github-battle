@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ThemeConsumer } from '../../contexts/theme';
+import ThemeContext from '../../contexts/theme';
 
 class PlayerInput extends Component {
     static propTypes = {
@@ -26,8 +26,8 @@ class PlayerInput extends Component {
 
     render() {
         return (
-            <ThemeConsumer>
-                {({ theme }) => (
+            <ThemeContext.Consumer>
+                {(theme) => (
                     <form className="column player" onSubmit={this.handleSubmit}>
                         <label htmlFor={this.props.label} className="player-label">
                             {this.props.label}
@@ -52,7 +52,7 @@ class PlayerInput extends Component {
                         </div>
                     </form>
                 )}
-            </ThemeConsumer>
+            </ThemeContext.Consumer>
         )
     }
 }
