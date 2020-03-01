@@ -16,7 +16,6 @@ const resultsReducer = (state, action) => {
             }
         case 'success':
             return {
-                ...state,
                 winner: action.winner,
                 loser: action.loser,
                 error: null,
@@ -60,7 +59,7 @@ const Results = ({ location }) => {
                     errorMessage: message,
                 }));
         }
-    }, []);
+    }, [playerOne, playerTwo]);
 
     const { winner, loser, error, loading } = state;
 
