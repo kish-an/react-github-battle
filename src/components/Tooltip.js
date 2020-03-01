@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import withHover from '../HOC/withHover';
 import Hover from '../RenderProps/Hover';
+import useHover from '../hooks/useHover';
 
 const styles = {
     container: {
@@ -26,16 +27,14 @@ const styles = {
     }
 }
 
-function Tooltip({ text, children }) {
+const Tooltip = ({ text, children }) => {
+    const [hovering, attributes] = useHover();
+
     return (
-        <Hover>
-            {hovering => (
-                <div style={styles.container}>
-                    {hovering && <div style={styles.tooltip}>{text}</div>}
-                    {children}
-                </div>
-            )}
-        </Hover>
+        <div style={styles.container} {...attributes}>
+            {hovering && <div style={styles.tooltip}>{text}</div>}
+            {children}
+        </div>
     )
 }
 
