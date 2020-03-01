@@ -1,60 +1,50 @@
-import React, { Component, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ThemeContext from '../../contexts/theme';
 
-class PlayerInput extends Component {
-    static propTypes = {
-        onSubmit: PropTypes.func.isRequired,
-        label: PropTypes.string.isRequired,
-    }
+const PlayerInput = ({ onSubmit, label }) => {
+    const [username, setUsername] = useState('');
+    const theme = useContext(ThemeContext);
 
-    state = {
-        username: '',
-    }
-
-    handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
-
-        this.props.onSubmit(this.state.username);
+        onSubmit(username);
     }
 
-    handleChange = e => {
-        this.setState({
-            username: e.target.value
-        });
+    const handleChange = e => {
+        setUsername(e.target.value);
     }
 
-    render() {
-        return (
-            <ThemeContext.Consumer>
-                {(theme) => (
-                    <form className="column player" onSubmit={this.handleSubmit}>
-                        <label htmlFor={this.props.label} className="player-label">
-                            {this.props.label}
-                        </label>
-                        <div className="row player-inputs">
-                            <input
-                                type="text"
-                                id={this.props.label}
-                                className={`input-${theme}`}
-                                placeholder="Github username"
-                                autoComplete="off"
-                                value={this.state.username}
-                                onChange={this.handleChange}
-                            />
-                            <button
-                                className={`btn ${theme === 'light' ? 'dark' : 'light'}-btn`}
-                                type="submit"
-                                disabled={!this.state.username}
-                            >
-                                Submit
-                        </button>
-                        </div>
-                    </form>
-                )}
-            </ThemeContext.Consumer>
-        )
-    }
+    return (
+        <form className="column player" onSubmit={handleSubmit}>
+            <label htmlFor={label} className="player-label">
+                {label}
+            </label>
+            <div className="row player-inputs">
+                <input
+                    type="text"
+                    id={label}
+                    className={`input-${theme}`}
+                    placeholder="Github username"
+                    autoComplete="off"
+                    value={username}
+                    onChange={handleChange}
+                />
+                <button
+                    className={`btn ${theme === 'light' ? 'dark' : 'light'}-btn`}
+                    type="submit"
+                    disabled={!username}
+                >
+                    Submit
+                </button>
+            </div>
+        </form>
+    )
+}
+
+PlayerInput.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired,
 }
 
 export default PlayerInput;
