@@ -17,7 +17,7 @@ function ReposGrid({ repos }) {
                             header={`#${index + 1}`}
                             avatar={avatar_url}
                             href={`https://github.com/${login}`}
-                            name={login}
+                            name={name}
                         >
                             <ul className="card-list">
                                 <li>
